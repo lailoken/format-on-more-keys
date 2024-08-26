@@ -9,8 +9,10 @@ This Visual Studio Code extension automatically formats your document when you t
 3. Select the downloaded `.vsix` file.
 
 ## Usage
-- Type any of the following characters in your code: `)`, `}`, `;`, `]`.
+- Type any of the following characters in your code: `)`, `}`
 - The extension will automatically trigger the document formatting command.
+- For `)` it will format the current line
+- For `}` it will trigger a format on all recently changed lines.
 
 ## Features
 - Automatically formats code on typing specific characters.
