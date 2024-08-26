@@ -1,7 +1,7 @@
 {
   "name": "format-on-more-keys",
-  "version": "1.2.0",
-  "description": "A VS Code extension to format code on additional key presses of '}'.",
+  "version": "1.2.1",
+  "description": "A VS Code extension to format C/C++/C# code blocks when '}' is typed.",
   "author": "Marius Piedallu van Wyk",
   "publisher": "Lailoken",
   "license": "MIT",
@@ -10,7 +10,7 @@
     "url": "https://github.com/lailoken/format-on-more-keys.git"
   },
   "engines": {
-    "vscode": "^1.92.0"
+    "vscode": "^1.50.0"
   },
   "categories": [
     "Other"
