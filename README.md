@@ -1,7 +1,7 @@
 # Format On More Keys
 
 ## Description
-This Visual Studio Code extension automatically formats your document when you type specific characters like `)`, `}`, `;`, and `]`.
+This Visual Studio Code extension automatically formats your code block when you type the '}' character.
 
 ## Installation
 1. Download the latest `.vsix` file from the releases.
@@ -9,10 +9,9 @@ This Visual Studio Code extension automatically formats your document when you t
 3. Select the downloaded `.vsix` file.
 
 ## Usage
-- Type any of the following characters in your code: `)`, `}`
-- The extension will automatically trigger the document formatting command.
-- For `)` it will format the current line
-- For `}` it will trigger a format on all recently changed lines.
+- Type any of the following characters in your code: `}`
+- The extension will automatically trigger the document selection/formatting commands.
+- For `}` it will trigger a format on a current block and opening directive
 
 ## Features
 - Automatically formats code on typing specific characters.

@@ -1,7 +1,7 @@
 {
   "name": "format-on-more-keys",
-  "version": "1.1.1",
-  "description": "A VS Code extension to format code on additional key presses like '}' and ')'.",
+  "version": "1.2.0",
+  "description": "A VS Code extension to format code on additional key presses of '}'.",
   "author": "Marius Piedallu van Wyk",
   "publisher": "Lailoken",
   "license": "MIT",
