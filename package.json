@@ -1,0 +1,64 @@
+{
+  "name": "format-on-more-keys",
+  "version": "1.0.0",
+  "description": "A VS Code extension to format code on additional key presses like '}' and ')'.",
+  "author": "Marius Piedallu van Wyk",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lailoken/format-on-more-keys.git"
+  },
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+      "onLanguage:c",
+      "onLanguage:cpp",
+      "onLanguage:csharp",
+      "onLanguage:objective-c",
+      "onLanguage:objective-cpp"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+      "commands": [
+          {
+              "command": "extension.formatOnType",
+              "title": "Format on Type"
+          }
+      ],
+      "keybindings": [
+          {
+              "key": ")",
+              "command": "type",
+              "when": "editorTextFocus"
+          },
+          {
+              "key": "}",
+              "command": "type",
+              "when": "editorTextFocus"
+          }
+      ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.92.0",
+    "@types/mocha": "^10.0.7",
+    "@types/node": "20.x",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.11.0",
+    "eslint": "^8.57.0",
+    "typescript": "^5.4.5",
+    "@vscode/test-cli": "^0.0.9",
+    "@vscode/test-electron": "^2.4.0"
+  }
+}
