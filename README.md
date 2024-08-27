@@ -1,12 +1,10 @@
 # Format On More Keys
 
 ## Description
-This Visual Studio Code extension automatically formats the current code block when you type the '}' character.
+A VS Code extension to format C/C++/C#/Java -type code blocks when '}' is pressed
 
 ## Installation
-1. Download the latest `.vsix` file from the releases.
-2. In Visual Studio Code, press `Ctrl+Shift+P`, then select `Extensions: Install from VSIX...`.
-3. Select the downloaded `.vsix` file.
+1. Installed via Extensions Marketplace
 
 ## Usage
 - Type any of the following characters in your code: `}`
@@ -17,7 +15,7 @@ This Visual Studio Code extension automatically formats the current code block w
 - Automatically formats code on typing specific characters.
 
 ## Known Issues
-- None at the moment.
+- If a } is typed inside a comment or string, then formatting may be applied to unknown regions.
 
 ## License
 MIT

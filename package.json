@@ -1,7 +1,7 @@
 {
   "name": "format-on-more-keys",
-  "version": "1.2.1",
-  "description": "A VS Code extension to format C/C++/C# code blocks when '}' is typed.",
+  "version": "1.2.4",
+  "description": "A VS Code extension to format C/C++/C#/Java -type code blocks when '}' is pressed.",
   "author": "Marius Piedallu van Wyk",
   "publisher": "Lailoken",
   "license": "MIT",
@@ -10,50 +10,52 @@
     "url": "https://github.com/lailoken/format-on-more-keys.git"
   },
   "engines": {
-    "vscode": "^1.50.0"
+    "vscode": "^1.60.0"
   },
   "categories": [
     "Other"
   ],
   "activationEvents": [
-      "onLanguage:c",
-      "onLanguage:cpp",
-      "onLanguage:csharp",
-      "onLanguage:objective-c",
-      "onLanguage:objective-cpp"
+    "onLanguage:c",
+    "onLanguage:cpp",
+    "onLanguage:csharp",
+    "onLanguage:java",
+    "onLanguage:javascript",
+    "onLanguage:typescript"
   ],
   "main": "./out/extension.js",
   "contributes": {
-      "commands": [
-          {
-              "command": "extension.formatOnType",
-              "title": "Format on Type"
-          }
-      ],
-      "keybindings": [
-          {
-              "key": ")",
-              "command": "type",
-              "when": "editorTextFocus"
-          },
-          {
-              "key": "}",
-              "command": "type",
-              "when": "editorTextFocus"
-          }
-      ]
+    "commands": [
+      {
+        "command": "extension.formatOnType",
+        "title": "Format on Type"
+      }
+    ],
+    "keybindings": [
+      {
+        "key": ")",
+        "command": "type",
+        "when": "editorTextFocus"
+      },
+      {
+        "key": "}",
+        "command": "type",
+        "when": "editorTextFocus"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src --ext ts",
-    "test": "vscode-test"
+    "lint": "eslint src --ext ts"
   },
   "devDependencies": {
-    "@types/vscode": "^1.50.0",
     "@types/node": "20.x",
-    "typescript": "^5.4.5"
+    "@types/vscode": "^1.60.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4"
   }
 }

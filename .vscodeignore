@@ -1,11 +1,27 @@
-.vscode/**
-.vscode-test/**
+# Ignore the source TypeScript files
 src/**
-.gitignore
-.yarnrc
-vsc-extension-quickstart.md
+
+# Ignore test-related files
+.vscode-test/**
+**/.vscode-test.*
+
+# Ignore development configurations
+.vscode/**
 **/tsconfig.json
 **/.eslintrc.json
+
+# Ignore source maps and TypeScript files after bundling
 **/*.map
 **/*.ts
-**/.vscode-test.*
+
+# Ignore version control files and other configuration files not needed in the package
+.gitignore
+.yarnrc
+.vscodeignore
+
+# Ignore markdown files used for documentation
+vsc-extension-quickstart.md
+
+# Ignore node_modules except for the bundled output (adjust if bundling)
+node_modules/**
+!node_modules/essential-package/**  # Replace with the actual essential package name if needed

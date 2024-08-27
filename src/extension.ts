@@ -40,38 +40,64 @@ export function deactivate() {}
 function findMatchingStart(line: number, document: vscode.TextDocument, openChar: string, closeChar: string): number {
     let level = 0;
     let inString = false;
+    let inBlockComment = false;
     let stringChar = ''; // To track whether we are inside a single-quoted or double-quoted string
 
     for (let i = line; i >= 0; i--) {
-        const text = document.lineAt(i).text.trim();
+        let text = document.lineAt(i).text;
+
+        // remove comments
+        const commentIndex = text.indexOf('//');
+        if (commentIndex >= 0) {
+            text = text.substring(0, commentIndex);
+        }
+
+        // check if the line starts with a openChar (we always stop here for safety)
+        if (text.startsWith(openChar)) {
+            return i;
+        }
+
+        text = text.trim();
 
         for (let j = text.length - 1; j >= 0; j--) {
             const char = text[j];
 
-            // Check for escape characters
-            if (char === '\\' && j > 0 && text[j - 1] === '\\') {
-                j--; // Skip the escaped character
+            // Handle block comments
+            if (!inBlockComment) {
+                if (j > 0 && text[j - 1] === '*' && char === '/') {
+                    inBlockComment = true;
+                    j--;
+                    continue;
+                }
+            } else if (char === '*' && j > 0 && text[j - 1] === '/') {
+                inBlockComment = false;
+                j--;
                 continue;
             }
 
             // Handle string start/end
-            if ((char === '"' || char === "'") && (j === 0 || text[j - 1] !== '\\')) {
-                if (inString && char === stringChar) {
-                    inString = false; // Closing the string
-                } else if (!inString) {
-                    inString = true;
-                    stringChar = char;
+            if (inString) {
+                // Check for escape characters
+                if (j > 0 && text[j - 1] === '\\') {
+                    // skip the escaped character
+                    j--;
+                    continue;
                 }
+                if (char === stringChar)
+                    inString = false; // Closing the string
+                continue;
             }
-
-            // If we're in a string, skip processing block characters
-            if (inString) continue;
+            else if (char === '"' || char === '\'') {
+                inString = true;
+                stringChar = char;
+                continue;
+            }
 
             if (char === closeChar) {
                 level++;
             } else if (char === openChar) {
                 level--;
-                if (level === 0) {
+                if (level <= 0) {
                     return i;
                 }
             }
